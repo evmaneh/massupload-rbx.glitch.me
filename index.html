@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>degen is fine asf</title>
+    <style>
+        #output-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .output-image {
+            margin: 10px;
+            object-fit: cover;
+        }
+        .loading-bar {
+            width: 100%;
+            height: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+        .loading-progress {
+            height: 100%;
+            background-color: #4caf50;
+            border-radius: 10px;
+            width: 0;
+            transition: width 0.3s ease;
+        }
+    </style>
+    <link rel="stylesheet" href="lib/style.css">
+</head>
+<body>
+    <h1>Lazy Cuck Tool by Degen</h1>
+    <a href="updates.html">Updates/How to Use</a>
+    <p>dm me new ideas: japen_19310 <a href="https://discord.gg/H2CrGNJ84r">Discord Server</a></p>
+    <input type="file" id="imageInput" accept="image/*">
+    <br>
+    <label for="variationCount">Number of Variations:</label>
+    <input type="number" id="variationCount" value="10" min="1">
+    <br>
+    <p><input type="text" id="baseName" placeholder="file_name">
+    .png
+    </p>
+    <button onclick="generateVariations()">Generate Variations</button>
+    <div class="loading-bar" style="display: none;">
+        <div id="loadingProgress" class="loading-progress"></div>
+    </div>
+    <br>
+    <input type="text" id="zipFileName" placeholder="zip_file_name">
+    <br>
+    <button onclick="downloadZip()">Download Zip</button>
+    <br>
+    <button id="tabsButton">Tabs</button>
+    <label class="switch">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider round"></span>
+    </label>
+    <div id="output-container"></div>
+
+    <script src="https://stuk.github.io/jszip/dist/jszip.min.js"></script>
+    <script src="script.js"></script>
+    <script src="lib/script.js"></script>
+    <script>
+        document.getElementById('tabsButton').addEventListener('click', function() {
+            var variationCount = document.getElementById('variationCount').value;
+            for (var i = 0; i < variationCount; i++) {
+                window.open('https://create.roblox.com/dashboard/creations?activeTab=Decal', '_blank');
+            }
+        });
+    </script>
+</body>
+</html>
