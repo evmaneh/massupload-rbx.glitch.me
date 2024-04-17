@@ -1,0 +1,30 @@
+{
+  "name": "massupload-rbx",
+  "version": "0.1.1",
+  "description": "A Node app made by Degen.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "fastify": "^4.26.2",
+    "handlebars": "^4.7.8",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "@fastify/view": "^9.0.0",
+    "@fastify/static": "^7.0.3",
+    "@fastify/formbody": "^7.4.0"
+  },
+  "engines": {
+    "node": "14.x"
+  },
+  "repository": {
+    "url": "https://massupload-rbx.glitch.me/"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "glitch",
+    "sqlite"
+  ]
+}
