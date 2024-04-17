@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remove Alpha</title>
+  <link rel="stylesheet" href="/style.css">
+<script>
+window.onload = function() {
+    document.getElementById('fileInput').addEventListener('change', handleFileSelect, false);
+};
+
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const image = new Image();
+        image.src = event.target.result;
+
+        image.onload = function() {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = image.width;
+            canvas.height = image.height;
+            
+            ctx.drawImage(image, 0, 0);
+
+            const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const data = imageData.data;
+
+            for (let i = 3; i < data.length; i += 4) {
+                data[i] = 255;
+            }
+
+            ctx.putImageData(imageData, 0, 0);
+
+            const newImage = new Image();
+            newImage.src = canvas.toDataURL('image/png');
+
+            document.getElementById('output').innerHTML = '';
+            document.getElementById('output').appendChild(newImage);
+        };
+    };
+
+    reader.readAsDataURL(file);
+}
+</script>
+</head>
+<body>
+<h1>Remove Alpha Channel from PNG</h1>
+  <p>
+    Roblox has the ability to remove the alpha channel in the moderation panel, and is most likely automatically done for its bots.
+  </p>
+<input type="file" id="fileInput" accept="image/png"><br><br>
+<div id="output"></div>
+</body>
+</html>
