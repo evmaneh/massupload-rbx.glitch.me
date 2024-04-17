@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate Variations</title>
+    <link rel="stylesheet" href="generate/styles.css" />
+  </head>
+  <body>
+    <header>
+        <h1>Mass Upload Tool by Degen</h1>
+    </header>
+    <p>
+      Import Idea
+    </p>
+    <p>
+      Or make the idea yourself:
+      <a href="https://github.com/evmaneh/massupload-rbx.glitch.me">Github</a>
+    </p>
+    <input
+      type="file"
+      id="imageInput"
+      accept="image/*"
+      onchange="updateFileName()"
+    />
+    <br />
+    <label for="variationCount">Number of Variations:</label>
+    <input type="number" id="variationCount" value="10" min="1" />
+    <br />
+    <p>
+      <input type="text" id="baseName" placeholder="file_name" />
+      .png
+    </p>
+    <button onclick="generateVariations()">Generate Variations</button>
+    <div class="loading-bar" style="display: none">
+      <div id="loadingProgress" class="loading-progress"></div>
+    </div>
+    <br />
+    <input type="text" id="zipFileName" placeholder="zip_file_name" />
+    <br />
+    <button onclick="downloadZip()">Download Zip</button>
+    <br />
+    <label class="switch">
+      <input type="checkbox" id="darkModeToggle" />
+      <span class="slider round"></span>
+    </label>
+    <div id="output-container"></div>
+
+    <script src="https://stuk.github.io/jszip/dist/jszip.min.js"></script>
+    <script src="generate/zip.js"></script>
+    <script src="generate/dark.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const darkModeToggle = document.getElementById("darkModeToggle");
+
+        darkModeToggle.addEventListener("change", function () {
+          document.body.classList.toggle("dark-mode", darkModeToggle.checked);
+          document
+            .getElementById("output-container")
+            .classList.toggle("dark-mode", darkModeToggle.checked);
+        });
+      });
+
+      document
+        .getElementById("tabsButton")
+        .addEventListener("click", function () {
+          var variationCount = document.getElementById("variationCount").value;
+          for (var i = 0; i < variationCount; i++) {
+            window.open(
+              "https://create.roblox.com/dashboard/creations?activeTab=Decal",
+              "_blank"
+            );
+          }
+        });
+    </script>
+  </body>
+</html>
