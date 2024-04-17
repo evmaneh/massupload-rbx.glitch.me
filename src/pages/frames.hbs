@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="frames/styles.css" />
+  <title>IFrame Uploader</title>
+</head>
+<body>
+  <header>
+        <h1>Mass Upload Tool by Degen</h1>
+    </header>
+        <h3><a href="framestut.md">Proper Use Tutorial</a></h3>
+    <p>Enter a number</p>
+    <input type="number" id="playerNumber" min="1" placeholder="Enter amount">
+    <button onclick="generatePlayer()">Generate</button>
+    <div id="playerContainer"></div>
+
+
+  <script>
+        function generatePlayer() {
+            var number = document.getElementById("playerNumber").value;
+            var container = document.getElementById("playerContainer");
+            container.innerHTML = ""; // Clear
+
+            for (var i = 1; i <= number; i++) {
+                var iframe = document.createElement("iframe");
+                iframe.setAttribute("src", "https://create.roblox.com/dashboard/creations?activeTab=Decal");
+                iframe.setAttribute("frameborder", "0");
+                iframe.setAttribute("allowfullscreen", "");
+                container.appendChild(iframe);
+
+                var playerDiv = document.createElement("div");
+                playerDiv.classList.add("player-container");
+                playerDiv.appendChild(iframe);
+                container.appendChild(playerDiv);
+            }
+        }
+    </script>
+  
+
+</body>
+</html>
